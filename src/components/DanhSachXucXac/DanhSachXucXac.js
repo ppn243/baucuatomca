@@ -6,7 +6,7 @@ export default function DanhSachXucXac({ backgroundColor }) {
 
   useEffect(() => {
     const col4Width = sceneRef.current.clientWidth;
-
+    const localSceneRef = sceneRef.current;
     // Khởi tạo scene
     const scene = new THREE.Scene();
 
@@ -87,9 +87,9 @@ export default function DanhSachXucXac({ backgroundColor }) {
     // Cleanup function
     return () => {
       // Remove renderer.domElement
-      sceneRef.current.removeChild(renderer.domElement);
+      localSceneRef.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [backgroundColor]);
 
   return <div ref={sceneRef}></div>;
 }
