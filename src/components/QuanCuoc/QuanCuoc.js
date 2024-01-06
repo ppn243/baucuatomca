@@ -3,11 +3,7 @@ import React from "react";
 export default function QuanCuoc() {
   return (
     <div className="mt-3 ">
-      <img
-        src="./img/BaiTapGameBauCua/Bau.png"
-        style={{ width: 250 }}
-        alt="Bau"
-      />
+      <img src="./img/bau.png" style={{ width: 250 }} alt="Bau" />
 
       <div
         className="bg-success mt-2 pb-2 text-center"

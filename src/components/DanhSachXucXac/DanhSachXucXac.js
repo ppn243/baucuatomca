@@ -21,7 +21,7 @@ export default function DanhSachXucXac({ backgroundColor }) {
 
     // Khởi tạo renderer
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(col4Width, window.innerHeight); // Sử dụng kích thước của col-4
+    renderer.setSize(col4Width, col4Width); // Sử dụng kích thước của col-4
     scene.background = new THREE.Color(backgroundColor);
     sceneRef.current.appendChild(renderer.domElement);
 
@@ -34,9 +34,16 @@ export default function DanhSachXucXac({ backgroundColor }) {
     scene.add(disk);
 
     // Tạo 3 cục xúc xắc và giảm kích thước
-    const diceGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5); // Giảm kích thước cục xúc xắc
-    const texturePath = "./img/Bau.png";
-    const diceMaterials = Array.from({ length: 6 }, () => {
+    const diceGeometry = new THREE.BoxGeometry(0.6, 0.6, 0.6); // Giảm kích thước cục xúc xắc
+    const texturePaths = [
+      "./img/bau.png",
+      "./img/ca.png",
+      "./img/cua.png",
+      "./img/ga.png",
+      "./img/nai.png",
+      "./img/tom.png",
+    ];
+    const diceMaterials = texturePaths.map((texturePath) => {
       return new THREE.MeshBasicMaterial({
         map: new THREE.TextureLoader().load(texturePath),
       });
@@ -58,7 +65,8 @@ export default function DanhSachXucXac({ backgroundColor }) {
     bottomRightDice.position.x = 1; // Đặt vị trí theo chiều ngang
     bottomRightDice.position.y = -0.5; // Đặt vị trí theo chiều cao
     scene.add(bottomRightDice);
-
+    // Đặt vị trí của đĩa cao lên trên
+    disk.position.z = 0.1;
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
